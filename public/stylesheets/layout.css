@@ -17,7 +17,7 @@
 /* #Site Styles
 ================================================== */
 .title {
-  margin:1.5em 0;
+  margin:1.5em 0 0.5em;
 }
 
 .large {
@@ -26,12 +26,23 @@
   max-width:600px;
 }
 
+input.inline {
+  display:inline;
+}
+
 .navigation-menu li {
   margin-bottom:2px;
 }
 
 .navigation-menu-link {
   text-decoration:none;
+}
+
+.result-item {
+  background:#eee;
+  max-width:600px;
+  padding:10px;
+  margin:20px 0;
 }
 
 /* #Page Styles

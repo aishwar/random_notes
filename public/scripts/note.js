@@ -24,8 +24,8 @@ function SearchCtrl($scope, $http) {
   
   // Populates the results list with the results for the search query
   $scope.search = function () {
-    $http.get('/api/v1/notes/search', { params:{ q:$scope.q } }).success(function (data) {
-      $scope.results = data;
+    $http.get('/api/v1/notes/search', { params:{ q:$scope.q } }).success(function (results) {
+      $scope.results = results;
     });
   }
   

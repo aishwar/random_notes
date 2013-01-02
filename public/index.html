@@ -1,12 +1,25 @@
 <!doctype html>
 <html ng-app="note">
   <head>
+    <link rel="stylesheet" href="stylesheets/base.css" />
+    <link rel="stylesheet" href="stylesheets/layout.css" />
+    <link rel="stylesheet" href="stylesheets/skeleton.css" />
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.js"></script>
     <script src="scripts/note.js"></script>
   </head>
   <body>
-    <h1>Random Notes</h1>
-    <div ng-view>
+    <div class="container">
+      <div class="sixteen columns">
+        <h1 class="title">Random Notes</h1>
+      </div>
+      <div class="two columns">
+        <ul class="navigation-menu">
+          <li><a href="#/new" class="navigation-menu-link">+ New</a></li>
+          <li><a href="#/" class="navigation-menu-link">+ Search</a></li>
+        </ul>
+      </div>
+      <div class="fourteen columns" ng-view>
+      </div>
     </div>
   </body>
 </html>
