@@ -4,8 +4,7 @@
  */
 
 var express = require('express')
-  , routes = require('./routes')
-  , user = require('./routes/user')
+  , notes = require('./routes/notes')
   , http = require('http')
   , path = require('path');
 
@@ -27,9 +26,14 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
+// Handle the root path 
 app.get('/', function (req, res) {
-  res.redirect("/index.html");
+  res.sendfile('./public/index.html');
 });
+
+// Notes Model API Routes
+app.get ('/api/v1/notes/search', notes.search);
+app.post('/api/v1/notes/new'   , notes.saveNew);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

@@ -6,34 +6,27 @@ angular.module('note', []).
       otherwise({ redirectTo:'/' });
   });
 
-var notes = [];
-
-function NoteCtrl($scope) {
+function NoteCtrl($scope, $http) {
   $scope.text = "";
   
-  // Saves the new note to the notes list
   $scope.save = function () {
-    notes.push({ text: $scope.text });
-    $scope.text = "";
+    // Notifies the server of the new note
+    $http.post('/api/v1/notes/new', { text: $scope.text }).success(function () {
+      // Clear out the old text
+      $scope.text = "";
+    });
   }
 }
 
-function SearchCtrl($scope) {
+function SearchCtrl($scope, $http) {
   $scope.q = "";
   $scope.results = [];
   
   // Populates the results list with the results for the search query
   $scope.search = function () {
-    var matches = [];
-    
-    notes.forEach(function (note) {
-      if (note.text.toLowerCase().indexOf($scope.q.toLowerCase()) > -1) {
-        matches.push(note);
-      }
+    $http.get('/api/v1/notes/search', { params:{ q:$scope.q } }).success(function (data) {
+      $scope.results = data;
     });
-    
-    $scope.results = matches;
-    return matches;
   }
   
   // Initialization
