@@ -7,6 +7,7 @@ dbstart: dbstop
 	else \
 		echo "Starting db..."; \
 		mongod --fork --logpath tmp/mongod.log --logappend --rest --dbpath=tmp/; \
+		sleep 1; \
 	fi
 
 dbstop:
