@@ -1,0 +1,10 @@
+<form ng-submit="search()">
+  <input type="text" name="search" id="search" placeholder="Search" ng-model="q" />
+  <input type="submit" value="Search" />
+  <a href="#/new">New Note</a>
+</form>
+<ul>
+  <li ng-repeat="note in results">
+    {{note.text}}
+  </li>
+</ul>
