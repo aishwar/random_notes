@@ -6,20 +6,10 @@ var Note = mongoose.model('Note', schema);
 
 exports.search = function (q, callback) {
   q = new RegExp(q, "i");
-  Note.find({ text:q }, function (err, res) {
-    // Error
-    if (err) return callback(err, null);
-    // Success
-    callback(null, res);
-  });
+  Note.find({ text:q }, callback);
 }
 
 exports.saveNew = function (text, callback) {
   var note = new Note({ text:text });
-  note.save(function (err) {
-    // Error
-    if (err) return callback(err, null);
-    // Success
-    callback(null, null);
-  });
+  note.save(callback);
 }
